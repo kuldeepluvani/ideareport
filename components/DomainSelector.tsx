@@ -68,30 +68,30 @@ export default function DomainSelector({
   return (
     <div className="space-y-4">
       {/* Select SaaS Domain - Display Only */}
-      <div className="glass-card rounded-xl px-6 py-4 text-sm text-gray-800 dark:text-gray-200 flex items-center justify-between">
+      <div className="neu-card-inset rounded-xl px-6 py-4 text-sm neu-text flex items-center justify-between">
         <span>Select SaaS Domain</span>
-        <ChevronDown className="h-4 w-4 text-gray-400 dark:text-gray-500" />
+        <ChevronDown className="h-4 w-4 neu-text" />
       </div>
 
       {/* Select Subdomain - Display Only */}
-      <div className="glass-card rounded-xl px-6 py-4 text-sm text-gray-700 dark:text-gray-300 flex items-center justify-between">
+      <div className="neu-card-inset rounded-xl px-6 py-4 text-sm neu-text flex items-center justify-between">
         <span>Select Subdomain</span>
-        <ChevronDown className="h-4 w-4 text-gray-400 dark:text-gray-500" />
+        <ChevronDown className="h-4 w-4 neu-text" />
       </div>
 
       {/* Select Missing Piece - Display Only */}
-      <div className="glass-card rounded-xl px-6 py-4 text-sm text-gray-700 dark:text-gray-300 flex items-center justify-between">
+      <div className="neu-card-inset rounded-xl px-6 py-4 text-sm neu-text flex items-center justify-between">
         <span>Select Missing Piece</span>
-        <ChevronDown className="h-4 w-4 text-gray-400 dark:text-gray-500" />
+        <ChevronDown className="h-4 w-4 neu-text" />
       </div>
 
       {/* Configuration Status - Display Only */}
-      <div className="glass-card rounded-xl px-6 py-4 text-sm text-gray-700 dark:text-gray-300">
+      <div className="neu-card-inset rounded-xl px-6 py-4 text-sm neu-text">
         Configuration Status
       </div>
 
       {/* Generation Settings - Display Only */}
-      <div className="glass-card rounded-xl px-6 py-4 text-sm text-gray-700 dark:text-gray-300">
+      <div className="neu-card-inset rounded-xl px-6 py-4 text-sm neu-text">
         Generation Settings
       </div>
     </div>

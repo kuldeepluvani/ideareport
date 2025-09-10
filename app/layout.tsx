@@ -6,11 +6,15 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'SaaS Idea Generator',
-  description: 'Automated SaaS idea generator powered by Gemini Pro 2.5',
-  keywords: ['saas', 'startup', 'ideas', 'ai', 'gemini'],
-  authors: [{ name: 'Your Name' }],
-  viewport: 'width=device-width, initial-scale=1',
+  title: 'IDEAFORGE - Neumorphism AI Idea Generator',
+  description: 'AI-powered SaaS idea generator with beautiful neumorphism design',
+  keywords: ['saas', 'startup', 'ideas', 'ai', 'gemini', 'neumorphism', 'design'],
+  authors: [{ name: 'IDEAFORGE Team' }],
+}
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
 }
 
 export default function RootLayout({

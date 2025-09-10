@@ -41,7 +41,10 @@ export default function Timer({
               setTimeLeft(60) // Reset to 60 seconds
             }, 5000) // 5 second delay to read the idea
           })
-          return prev // Keep current time while waiting
+          return 0 // Set to 0 instead of keeping current time
+        }
+        if (prev <= 0) {
+          return 0 // Prevent negative values
         }
         return prev - 1
       })
@@ -113,32 +116,21 @@ export default function Timer({
 
   return (
     <div className="w-full space-y-6">
-      {/* Progress Bar with Middle Text */}
+      {/* Neumorphism Progress Bar */}
       <div className="w-full relative">
-        {/* Background track */}
-        <div className="w-full bg-white dark:bg-slate-800 rounded-full h-8 overflow-hidden relative">
+        <div className="neu-progress h-8 w-full">
           {/* Progress fill */}
           <motion.div
-            className="absolute top-0 left-0 h-full rounded-full relative overflow-hidden timer-progress-fill"
+            className="neu-progress-fill"
             initial={{ width: 0 }}
             animate={{ width: `${progress}%` }}
             transition={{ duration: 1, ease: "easeInOut" }}
-            style={{
-              background: 'linear-gradient(to right, #3b82f6, #8b5cf6)', // Blue gradient
-            }}
           />
           
           {/* Center text */}
           <div className="absolute inset-0 flex items-center justify-center">
-            <span className="text-sm font-bold">
-              <span 
-                className="transition-colors duration-300"
-                style={{
-                  color: progress > 50 ? '#ffffff' : '#3b82f6'
-                }}
-              >
-                {getProgressText(progress)}
-              </span>
+            <span className="text-sm font-bold neu-text">
+              {getProgressText(progress)}
             </span>
           </div>
           
@@ -146,15 +138,10 @@ export default function Timer({
           <div className="absolute inset-0 flex items-center justify-end pr-4">
             <motion.div
               animate={isGenerating ? { 
-                scale: [1, 1.1, 1],
-                textShadow: [
-                  "0 0 20px rgba(59, 130, 246, 0.5)",
-                  "0 0 40px rgba(139, 92, 246, 0.8)",
-                  "0 0 20px rgba(6, 182, 212, 0.5)"
-                ]
+                scale: [1, 1.05, 1]
               } : {}}
               transition={{ duration: 0.5, repeat: isGenerating ? Infinity : 0 }}
-              className="text-lg font-mono font-bold aurora-text"
+              className="text-lg font-mono font-bold neu-headline"
             >
               {formatTime(timeLeft)}
             </motion.div>

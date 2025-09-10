@@ -17,6 +17,9 @@ function getRandomApiKey(): string {
   
   const randomIndex = Math.floor(Math.random() * API_KEYS.length)
   const key = API_KEYS[randomIndex]
+  if (!key) {
+    throw new Error('API key is undefined')
+  }
   console.log(`Using Gemini API Key ${randomIndex + 1} (random selection)`)
   return key
 }

@@ -10,7 +10,7 @@ export async function POST(request: NextRequest) {
     if (!domain || !subdomain || !missingPiece) {
       const domainKeys = Object.keys(domains)
       const randomDomain = domainKeys[Math.floor(Math.random() * domainKeys.length)]
-      const subdomains = domains[randomDomain]
+      const subdomains = domains[randomDomain as keyof typeof domains]
       const randomSubdomain = subdomains[Math.floor(Math.random() * subdomains.length)]
       const missingPieceKeys = Object.keys(missingPieces)
       const randomMissingPiece = missingPieceKeys[Math.floor(Math.random() * missingPieceKeys.length)]

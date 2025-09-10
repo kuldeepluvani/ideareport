@@ -31,9 +31,15 @@ export default function Home() {
     fetchIdeas()
   }, [])
 
+
   const fetchIdeas = async () => {
     try {
       const response = await fetch('/api/ideas')
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`)
+      }
+      
       const data = await response.json()
       setIdeas(data.ideas || [])
     } catch (error) {
@@ -113,51 +119,21 @@ export default function Home() {
 
   return (
     <div className="min-h-screen relative overflow-hidden">
-      {/* AI-Powered Background Elements */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        {/* Neural Network Background */}
-        <div className="neural-network"></div>
-        
-        {/* Floating AI Elements */}
-        <div className="floating-ai" style={{ top: '10%', left: '10%' }}></div>
-        <div className="floating-ai" style={{ top: '20%', right: '15%' }}></div>
-        <div className="floating-ai" style={{ bottom: '30%', left: '20%' }}></div>
-        <div className="floating-ai" style={{ bottom: '10%', right: '10%' }}></div>
-        
-        {/* AI Flow Elements */}
-        <div className="ai-flow-element" style={{ top: '5%', left: '0%' }}></div>
-        <div className="ai-flow-element" style={{ top: '60%', right: '0%' }}></div>
-        <div className="ai-flow-element" style={{ bottom: '20%', left: '30%' }}></div>
-        
-        {/* Data Streams */}
-        <div className="data-stream" style={{ left: '15%', top: '0%' }}></div>
-        <div className="data-stream" style={{ left: '85%', top: '0%' }}></div>
-        <div className="data-stream" style={{ left: '50%', top: '0%' }}></div>
-        <div className="data-stream" style={{ left: '25%', top: '0%' }}></div>
-        <div className="data-stream" style={{ left: '75%', top: '0%' }}></div>
-      </div>
-      {/* Enhanced Magical Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 left-10 w-3 h-3 particle"></div>
-        <div className="absolute top-40 right-20 w-2 h-2 particle"></div>
-        <div className="absolute bottom-40 left-20 w-4 h-4 particle"></div>
-        <div className="absolute bottom-20 right-10 w-3 h-3 particle"></div>
-        <div className="absolute top-60 left-1/2 w-2 h-2 particle"></div>
-        <div className="absolute bottom-60 right-1/3 w-3 h-3 particle"></div>
-        <div className="absolute top-80 left-1/4 w-2 h-2 particle"></div>
-        <div className="absolute bottom-80 right-1/4 w-3 h-3 particle"></div>
-      </div>
 
-      {/* AuraGloss Header */}
-      <header className="sticky top-0 z-50 glass-card glass-blur-xl border-b border-blue-500/20 dark:border-blue-500/30 dark:bg-slate-900/80">
-        <div className="max-w-4xl mx-auto px-4 py-4">
+      {/* Neumorphism Header */}
+      <header className="sticky top-0 z-50 neu-card mx-4 mt-4">
+        <div className="max-w-4xl mx-auto px-6 py-4">
           <div className="text-center">
             <div className="flex items-center justify-center space-x-4">
-              <Dna className="h-8 w-8 text-blue-500 dark:text-blue-400 dna-helix luminous-text" />
-              <h1 className="text-3xl font-bold ai-headline tracking-tight">IDEAFORGE</h1>
-              <Atom className="h-8 w-8 text-blue-600 dark:text-blue-500 molecular-bond luminous-text" />
+              <div className="neu-icon w-12 h-12">
+                        <Dna className="h-6 w-6 text-orange-500 dark:text-orange-400" />
+              </div>
+              <h1 className="text-3xl font-bold neu-headline tracking-tight">IDEAFORGE</h1>
+              <div className="neu-icon w-12 h-12">
+                <Atom className="h-6 w-6 text-orange-600 dark:text-orange-500" />
+              </div>
             </div>
-            <p className="text-sm text-gray-600 dark:text-gray-300 mt-1 ai-subtitle font-medium luminous-text">AI-Powered Innovation Laboratory</p>
+            <p className="text-sm neu-text mt-2 font-medium">AI-Powered Innovation Laboratory</p>
           </div>
         </div>
       </header>
@@ -170,25 +146,29 @@ export default function Home() {
           className="mb-4"
         >
           
-          {/* AuraGloss Three-Stage Progress Bar */}
-          <div className="ai-progress">
-            <div className="flex flex-col sm:flex-row rounded-2xl overflow-hidden glass-card glass-blur-lg shadow-2xl">
+          {/* Neumorphism Three-Stage Progress Bar */}
+          <div className="neu-card-inset p-2">
+            <div className="flex flex-col sm:flex-row rounded-2xl overflow-hidden">
               {/* Stage 1 - Domain Analysis */}
-              <div className={`flex-1 p-3 sm:p-4 text-center border-b sm:border-b-0 sm:border-r border-blue-500/20 dark:border-blue-500/30 transition-all duration-700 ${
-                progressStage >= 0 ? 'glass-stage-active bg-blue-500/10 dark:bg-blue-500/20' : 'glass-stage'
+              <div className={`flex-1 p-3 sm:p-4 text-center border-b sm:border-b-0 sm:border-r border-gray-300 dark:border-gray-600 transition-all duration-700 ${
+                progressStage >= 0 ? 'neu-card-inset bg-orange-50 dark:bg-orange-900/20' : ''
               }`}>
                 <div className="flex flex-row sm:flex-col items-center justify-center space-x-2 sm:space-x-0 sm:space-y-2">
                   <div className="relative">
-                    <Microscope className={`h-4 w-4 sm:h-5 sm:w-5 ${progressStage >= 0 ? 'text-blue-500 dark:text-blue-400 scientific-pulse luminous-text' : 'text-gray-600 dark:text-gray-300'}`} />
+                    <div className="neu-icon w-8 h-8 sm:w-10 sm:h-10">
+                      <Microscope className={`h-4 w-4 sm:h-5 sm:w-5 ${progressStage >= 0 ? 'text-orange-500 dark:text-orange-400' : 'text-gray-600 dark:text-gray-300'}`} />
+                    </div>
                     <div className="absolute -top-1 -right-1">
-                      <Calculator className="h-1.5 w-1.5 sm:h-2 sm:w-2 text-blue-400 dark:text-blue-500 molecular-bond luminous-text" />
+                      <div className="neu-icon w-3 h-3 sm:w-4 sm:h-4">
+                        <Calculator className="h-1.5 w-1.5 sm:h-2 sm:w-2 text-orange-400 dark:text-orange-500" />
+                      </div>
                     </div>
                   </div>
                   <div className="text-xs sm:text-sm font-semibold">
                     {showDomain ? (
-                      <span className="ai-headline text-sm aurora-text">{selectedDomain}</span>
+                      <span className="neu-headline text-sm">{selectedDomain}</span>
                     ) : (
-                      <span className={progressStage >= 0 ? 'text-blue-500 dark:text-blue-400 font-bold luminous-text' : 'text-gray-700 dark:text-gray-200'}>
+                      <span className={progressStage >= 0 ? 'text-orange-500 dark:text-orange-400 font-bold' : 'text-gray-600 dark:text-gray-300'}>
                         Domain Analysis
                       </span>
                     )}
@@ -197,21 +177,25 @@ export default function Home() {
               </div>
               
               {/* Stage 2 - Subdomain Selection */}
-              <div className={`flex-1 p-3 sm:p-4 text-center border-b sm:border-b-0 sm:border-r border-blue-500/20 dark:border-blue-500/30 transition-all duration-700 ${
-                progressStage >= 1 ? 'glass-stage-active bg-blue-500/10 dark:bg-blue-500/20' : 'glass-stage'
+              <div className={`flex-1 p-3 sm:p-4 text-center border-b sm:border-b-0 sm:border-r border-gray-300 dark:border-gray-600 transition-all duration-700 ${
+                progressStage >= 1 ? 'neu-card-inset bg-orange-50 dark:bg-orange-900/20' : ''
               }`}>
                 <div className="flex flex-row sm:flex-col items-center justify-center space-x-2 sm:space-x-0 sm:space-y-2">
                   <div className="relative">
-                    <Beaker className={`h-4 w-4 sm:h-5 sm:w-5 ${progressStage >= 1 ? 'text-blue-600 dark:text-blue-500 scientific-pulse luminous-text' : 'text-gray-600 dark:text-gray-300'}`} />
+                    <div className="neu-icon w-8 h-8 sm:w-10 sm:h-10">
+                      <Beaker className={`h-4 w-4 sm:h-5 sm:w-5 ${progressStage >= 1 ? 'text-orange-600 dark:text-orange-500' : 'text-gray-600 dark:text-gray-300'}`} />
+                    </div>
                     <div className="absolute -top-1 -right-1">
-                      <TestTube className="h-1.5 w-1.5 sm:h-2 sm:w-2 text-blue-500 dark:text-blue-600 molecular-bond luminous-text" />
+                      <div className="neu-icon w-3 h-3 sm:w-4 sm:h-4">
+                        <TestTube className="h-1.5 w-1.5 sm:h-2 sm:w-2 text-orange-500 dark:text-orange-600" />
+                      </div>
                     </div>
                   </div>
                   <div className="text-xs sm:text-sm font-semibold">
                     {showSubdomain ? (
-                      <span className="ai-headline text-sm aurora-text">{selectedSubdomain}</span>
+                      <span className="neu-headline text-sm">{selectedSubdomain}</span>
                     ) : (
-                      <span className={progressStage >= 1 ? 'text-blue-600 dark:text-blue-500 font-bold luminous-text' : 'text-gray-700 dark:text-gray-200'}>
+                      <span className={progressStage >= 1 ? 'text-orange-600 dark:text-orange-500 font-bold' : 'text-gray-600 dark:text-gray-300'}>
                         Subdomain Selection
                       </span>
                     )}
@@ -221,17 +205,21 @@ export default function Home() {
               
               {/* Stage 3 - Idea Generation */}
               <div className={`flex-1 p-3 sm:p-4 text-center transition-all duration-700 ${
-                progressStage >= 2 ? 'glass-stage-active bg-blue-500/10 dark:bg-blue-500/20' : 'glass-stage'
+                progressStage >= 2 ? 'neu-card-inset bg-orange-50 dark:bg-orange-900/20' : ''
               }`}>
                 <div className="flex flex-row sm:flex-col items-center justify-center space-x-2 sm:space-x-0 sm:space-y-2">
                   <div className="relative">
-                    <Brain className={`h-4 w-4 sm:h-5 sm:w-5 ${progressStage >= 2 ? 'text-blue-700 dark:text-blue-600 scientific-pulse luminous-text' : 'text-gray-400 dark:text-gray-500'}`} />
+                    <div className="neu-icon w-8 h-8 sm:w-10 sm:h-10">
+                      <Brain className={`h-4 w-4 sm:h-5 sm:w-5 ${progressStage >= 2 ? 'text-orange-700 dark:text-orange-600' : 'text-gray-400 dark:text-gray-500'}`} />
+                    </div>
                     <div className="absolute -top-1 -right-1">
-                      <Dna className="h-1.5 w-1.5 sm:h-2 sm:w-2 text-blue-600 dark:text-blue-700 dna-helix luminous-text" />
+                      <div className="neu-icon w-3 h-3 sm:w-4 sm:h-4">
+                        <Dna className="h-1.5 w-1.5 sm:h-2 sm:w-2 text-orange-600 dark:text-orange-700" />
+                      </div>
                     </div>
                   </div>
                   <div className="text-xs sm:text-sm font-semibold">
-                    <span className={progressStage >= 2 ? 'ai-headline text-sm font-bold aurora-text' : 'text-gray-700 dark:text-gray-200'}>
+                    <span className={progressStage >= 2 ? 'text-orange-700 dark:text-orange-600 font-bold' : 'text-gray-600 dark:text-gray-300'}>
                       Innovation Synthesis
                     </span>
                   </div>
@@ -260,6 +248,7 @@ export default function Home() {
           />
         </motion.div>
 
+
         {/* Chat-Style Ideas Container */}
         <div className="flex-1 flex flex-col min-h-0">
           <div className="flex-1 overflow-y-auto space-y-4 pr-2">
@@ -272,36 +261,36 @@ export default function Home() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.3, delay: index * 0.1 }}
-                    className="glass-card rounded-2xl p-4 hover:glass-card-intense transition-all duration-500 shadow-lg hover:shadow-xl group relative"
+                    className="neu-card rounded-2xl p-4 hover:neu-card transition-all duration-500 group relative"
                   >
                     {/* Tags in top right corner */}
                     <div className="absolute top-3 right-3 flex flex-wrap gap-1 justify-end">
                       {idea.tags.split(',').map((tag, tagIndex) => (
-                        <span key={tagIndex} className="px-2 py-1 bg-blue-500/20 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 rounded-full text-xs font-medium">
+                        <span key={tagIndex} className="neu-tag-accent text-xs font-medium">
                           #{tag.trim()}
                         </span>
                       ))}
                     </div>
 
                     <div className="flex items-start space-x-3">
-                      <div className="w-8 h-8 bg-gradient-to-br from-blue-500/20 to-blue-600/20 dark:from-blue-500/30 dark:to-blue-600/30 rounded-lg flex items-center justify-center flex-shrink-0 shadow-md group-hover:shadow-lg transition-all duration-300">
-                        <Atom className="h-4 w-4 text-blue-500 dark:text-blue-400 luminous-text" />
+                      <div className="neu-icon w-8 h-8 flex-shrink-0">
+                        <Atom className="h-4 w-4 text-orange-500 dark:text-orange-400" />
                       </div>
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center space-x-2 text-sm mb-3">
-                          <span className="px-2 py-1 bg-blue-500/20 dark:bg-blue-500/30 rounded-full text-blue-600 dark:text-blue-400 font-semibold text-xs">
+                          <span className="neu-tag text-xs font-semibold">
                             {idea.domain}
                           </span>
-                          <span className="text-gray-400 dark:text-gray-500">•</span>
-                          <span className="px-2 py-1 bg-blue-600/20 dark:bg-blue-600/30 rounded-full text-blue-700 dark:text-blue-500 font-semibold text-xs">
+                          <span className="neu-text">•</span>
+                          <span className="neu-tag text-xs font-semibold">
                             {idea.subdomain}
                           </span>
-                          <span className="text-gray-400 dark:text-gray-500">•</span>
-                          <span className="px-2 py-1 bg-blue-700/20 dark:bg-blue-700/30 rounded-full text-blue-800 dark:text-blue-600 font-semibold text-xs">
+                          <span className="neu-text">•</span>
+                          <span className="neu-tag text-xs font-semibold">
                             {idea.missingPiece}
                           </span>
                         </div>
-                        <p className="text-gray-800 dark:text-gray-100 font-medium leading-relaxed mb-3 text-sm luminous-text">
+                        <p className="neu-text font-medium leading-relaxed mb-3 text-sm">
                           {idea.text}
                         </p>
                       </div>
@@ -311,11 +300,11 @@ export default function Home() {
               </AnimatePresence>
             ) : (
               <div className="text-center py-8">
-                <div className="w-16 h-16 mx-auto bg-gradient-to-br from-blue-500/20 to-blue-600/20 rounded-full flex items-center justify-center mb-4 glass-card shadow-lg">
-                  <Microscope className="h-8 w-8 text-blue-500 luminous-text" />
+                <div className="neu-icon w-16 h-16 mx-auto mb-4">
+                  <Microscope className="h-8 w-8 text-orange-500" />
                 </div>
-                <h3 className="text-xl font-semibold text-gray-700 dark:text-gray-300 mb-2 luminous-text">Analyzing Innovation Patterns...</h3>
-                <p className="text-gray-500 dark:text-gray-400 luminous-text">Your first AI-generated idea will appear here</p>
+                <h3 className="text-xl font-semibold neu-text mb-2">Analyzing Innovation Patterns...</h3>
+                <p className="neu-text">Your first AI-generated idea will appear here</p>
               </div>
             )}
           </div>
