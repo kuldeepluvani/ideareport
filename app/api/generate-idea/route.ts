@@ -40,23 +40,20 @@ export async function GET() {
   try {
     const ideas = await readExistingIdeas()
     
-    // Parse CSV data
-    const parsedIdeas = ideas.map(line => {
-      const [timestamp, domain, subdomain, missingPiece, text, tags] = line.split(',')
-      return {
-        id: timestamp,
-        timestamp,
-        domain,
-        subdomain,
-        missingPiece,
-        text: text.replace(/^"|"$/g, '').replace(/""/g, '"'), // Remove quotes and unescape
-        tags
-      }
-    }).reverse() // Show newest first
+    // Transform Supabase data to match expected format
+    const formattedIdeas = ideas.map(idea => ({
+      id: idea.id || idea.timestamp,
+      timestamp: idea.timestamp,
+      domain: idea.domain,
+      subdomain: idea.subdomain,
+      missingPiece: idea.missing_piece,
+      text: idea.text,
+      tags: idea.tags
+    }))
     
     return NextResponse.json({
       success: true,
-      ideas: parsedIdeas
+      ideas: formattedIdeas
     })
     
   } catch (error) {
