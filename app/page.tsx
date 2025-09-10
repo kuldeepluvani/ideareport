@@ -265,9 +265,9 @@ export default function Home() {
                   >
                     {/* Tags in top right corner */}
                     <div className="absolute top-3 right-3 flex flex-wrap gap-1 justify-end">
-                      {idea.tags.split(',').map((tag, tagIndex) => (
+                      {idea.tags.match(/\(([^)]+)\)/g)?.map((tag, tagIndex) => (
                         <span key={tagIndex} className="neu-tag-accent text-xs font-medium">
-                          #{tag.trim()}
+                          {tag.replace(/[()]/g, '')}
                         </span>
                       ))}
                     </div>

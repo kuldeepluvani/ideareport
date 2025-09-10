@@ -156,7 +156,7 @@ Generate a completely unique, technically innovative SaaS idea that pushes the b
       subdomain,
       missing_piece: missingPiece,
       text: ideaText,
-      tags: `(${domain}) (${subdomain})`
+      tags: `(${domain}) (${subdomain}) (${missingPiece})`
     }
     
     await writeIdeaToSupabase(idea)
@@ -196,7 +196,7 @@ Generate a completely unique, technically innovative SaaS idea that pushes the b
         subdomain,
         missing_piece: missingPiece,
         text: ideaText,
-        tags: `(${domain}) (${subdomain})`
+        tags: `(${domain}) (${subdomain}) (${missingPiece})`
       }
       
       await writeIdeaToSupabase(idea)
