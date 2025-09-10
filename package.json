@@ -1,0 +1,43 @@
+{
+  "name": "saas-idea-generator",
+  "version": "1.0.0",
+  "description": "Automated SaaS idea generator with Gemini Pro 2.5 API",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@google/genai": "^1.17.0",
+    "@google/generative-ai": "^0.2.0",
+    "csv-parser": "^3.0.0",
+    "csv-writer": "^1.6.0",
+    "framer-motion": "^10.0.0",
+    "lucide-react": "^0.294.0",
+    "next": "^14.0.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "tailwindcss": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "autoprefixer": "^10.0.0",
+    "eslint": "^8.0.0",
+    "eslint-config-next": "^14.0.0",
+    "postcss": "^8.0.0",
+    "typescript": "^5.0.0"
+  },
+  "keywords": [
+    "saas",
+    "idea-generator",
+    "ai",
+    "gemini",
+    "startup"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}
